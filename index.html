@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>bootstrap弹出对话框 - 基于bootstrap模态对话框的二次开发jquery.bootstrap.teninedialog.js插件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="bootstrap插件,bootstrap模态对话框,bootstrap弹出对话框"/>
+    <meta name="description" content="基于bootstrap模态对话框的二次开发jquery.bootstrap.teninedialog.js插件">
+    <meta name="author" content="">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+</head>
+<body>
+    <ol>
+        <h2>jquery.bootstrap.teninedialog.js使用说明</h2>
+        <p>不支持调用远程文件</p>
+        <p><a href="jquery/jquery.bootstrap.teninedialog.js" class="btn btn-primary">下载插件</a>&nbsp;<a href="jquery/jquery.bootstrap.teninedialog.min.js" class="btn btn-primary">压缩版</a></p>
+        <p>
+            <h3>引入jquery、bootstrap和jquery.bootstrap.teninedialog.js插件文件</h3>
+            <h4>完整例子代码：</h4>
+            <pre>
+                $.teninedialog({
+                    title:'系统提示',
+                    content:'确认删除本条记录?',
+                    showCloseButton:true,
+                    otherButtons:["确定","取消"],
+                    otherButtonStyles:['btn-primary','btn-primary'],
+                    bootstrapModalOption:{keyboard: true},
+                    dialogShow:function(){
+                        alert('即将显示对话框');
+                    },
+                    dialogShown:function(){
+                        alert('显示对话框');
+                    },
+                    dialogHide:function(){
+                        alert('即将关闭对话框');
+                    },
+                    dialogHidden:function(){
+                        alert('关闭对话框');
+                    },                    
+                    clickButton:function(sender,modal,index){
+                        alert('选中第'+index+'个按钮：'+sender.html());
+                        $(this).closeDialog(modal);
+                    }
+                });
+            </pre>
+            <p><a href="javascript:void(0);" class="btn demoBtn btn-primary">运行例子</a></p>
+            <h4>最简单的调用</h4>
+            <pre>
+                $.teninedialog({
+                    title:'系统提示',
+                    content:'确认删除本条记录?'
+                });
+            </pre>
+            <p><a href="javascript:void(0);" class="btn demoSimpleBtn btn-primary">运行例子</a></p>
+        </p>
+        <p>
+            <h4>
+            参数配置
+            </h4>
+            <pre>
+        //调用方式
+        $.teninedialog(options);
+        /**********************************/
+        //options 配置
+        var defaults = {
+            title:'标题',
+            content:'内容',
+            showCloseButton:true,//显示关闭按钮
+            otherButtons:[],//其他按钮文本，样式默认,["确定","取消"]
+            otherButtonStyles:[],//其他按钮的样式，['btn-primary','btn-primary'],bootstrap按钮样式
+            bootstrapModalOption:{},//默认的bootstrap模态对话框参数
+            dialogShow:function(){},//对话框即将显示事件
+            dialogShown:function(){},//对话框已经显示事件
+            dialogHide:function(){},//对话框即将关闭
+            dialogHidden:function(){},//对话框已经关闭事件
+            clickButton:function(sender,modal,index){}//选中按钮的序号，排除关闭按钮。sender:按钮jquery对象，model:对话框jquery对象,index:按钮的顺序,otherButtons的数组下标
+        }
+            </pre>
+        </p>
+        <p>
+<script src="http://s4.cnzz.com/stat.php?id=1398367&web_id=1398367" language="JavaScript"></script>&nbsp;<a href="http://www.xnwai.com" title="彼岸之远">彼岸之远</a>
+        </p>
+    </ol>
+    <script type="text/javascript" src="jquery/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery.bootstrap.teninedialog.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.demoBtn').click(function(){
+                $.teninedialog({
+                    title:'系统提示',
+                    content:'确认删除本条记录?',
+                    showCloseButton:true,
+                    otherButtons:["确定","取消"],
+                    otherButtonStyles:['btn-primary','btn-primary'],
+                    bootstrapModalOption:{keyboard: true},
+                    dialogShow:function(){
+                        alert('即将显示对话框');
+                    },
+                    dialogShown:function(){
+                        alert('显示对话框');
+                    },
+                    dialogHide:function(){
+                        alert('即将关闭对话框');
+                    },
+                    dialogHidden:function(){
+                        alert('关闭对话框');
+                    },                    
+                    clickButton:function(sender,modal,index){
+                        alert('选中第'+index+'个按钮：'+sender.html());
+                        $(this).closeDialog(modal);
+                    }
+                });
+            }); 
+
+            $('.demoSimpleBtn').click(function(){
+                $.teninedialog({
+                    title:'系统提示',
+                    content:'确认删除本条记录?'
+                });
+            });
+
+        });
+    </script>     
+</body>
+</html>
